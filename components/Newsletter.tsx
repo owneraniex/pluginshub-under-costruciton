@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, CheckCircle, ArrowRight, AlertCircle } from 'lucide-react';
+import { Mail, CheckCircle, ArrowRight } from 'lucide-react';
 import Input from './Input';
 import Button from './Button';
 
@@ -35,24 +35,24 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto relative z-10">
+    <div className="w-full max-w-lg mx-auto relative z-10">
       <AnimatePresence mode="wait">
         {status === 'success' ? (
           <motion.div
             key="success"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-6 text-center"
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-8 text-center backdrop-blur-md"
           >
-            <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-              <CheckCircle className="w-6 h-6 text-emerald-500" />
+            <div className="w-14 h-14 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-900/20">
+              <CheckCircle className="w-7 h-7 text-emerald-500" />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-1">You're on the list!</h3>
-            <p className="text-slate-400 text-sm">We'll notify you when we launch. No spam, we promise.</p>
+            <h3 className="text-xl font-bold text-white mb-2">You're on the list!</h3>
+            <p className="text-slate-400 text-sm mb-4">We'll notify you when we launch. No spam, just high-quality plugins.</p>
             <button 
               onClick={() => setStatus('idle')}
-              className="mt-4 text-sm text-emerald-400 hover:text-emerald-300 underline underline-offset-4"
+              className="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               Register another email
             </button>
@@ -64,7 +64,7 @@ const Newsletter: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             onSubmit={handleSubmit}
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-3 sm:gap-4"
           >
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="flex-grow">
@@ -85,14 +85,21 @@ const Newsletter: React.FC = () => {
                 type="submit" 
                 isLoading={status === 'loading'}
                 rightIcon={<ArrowRight className="w-4 h-4" />}
-                className="w-full sm:w-auto shrink-0"
+                className="w-full sm:w-auto shrink-0 shadow-xl shadow-primary-900/20"
               >
                 Notify Me
               </Button>
             </div>
-            <p className="text-xs text-slate-500 text-center sm:text-left pl-1">
-              Join <span className="text-slate-300 font-medium">2,400+</span> developers waiting for launch.
-            </p>
+            <div className="flex items-center justify-center sm:justify-start gap-2 pl-1">
+              <div className="flex -space-x-2">
+                {[1,2,3].map(i => (
+                  <div key={i} className="w-6 h-6 rounded-full bg-slate-800 border border-slate-900" />
+                ))}
+              </div>
+              <p className="text-xs text-slate-500">
+                Join <span className="text-slate-300 font-semibold">2,400+</span> developers waiting for launch.
+              </p>
+            </div>
           </motion.form>
         )}
       </AnimatePresence>

@@ -1,4 +1,4 @@
-import { Shield, Zap, Code2, Globe, Box, Coins, Github, Twitter, Disc } from 'lucide-react';
+import { Shield, Zap, Code2, Globe, Box, Coins, Github, Twitter } from 'lucide-react';
 import { Feature, SocialLink } from './types';
 
 export const SITE_NAME = "PluginsHub";
@@ -47,6 +47,5 @@ export const SOCIALS: SocialLink[] = [
   { platform: 'GitHub', url: 'https://github.com/owneraniex', icon: Github },
 ];
 
-// Fixed Launch Date: Feb 22, 2026 (14 days from Feb 8, 2026)
-// This ensures the timer counts down to a specific moment and doesn't reset on refresh.
+// Fixed Launch Date: Feb 22, 2026
 export const LAUNCH_DATE = "2026-02-22T00:00:00";
